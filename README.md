@@ -12,6 +12,7 @@ Egyszerű koordináta geometria feladatok megoldása.
     - Szögek fokban
 - Két vektor közbezárt szögének megadása
 - Két vektor n-edelő (pl: negyedelő) pontjának megadása
+- Két vektor összeadása, kivonása
 ### Még sok mindent tervezek, elég kezdetleges a program
 ## Telepítés
 ### Windows
