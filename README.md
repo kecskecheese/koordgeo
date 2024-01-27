@@ -46,7 +46,7 @@ Szükséged lesz `git`-re és `gcc`-re
 3. `cd koordgeo`<br>
 4. `gcc main.c -o koordgeo -lm`<br>
 5. `./koordgeo`
-#### Arch alaú linux
+#### Arch alapú linux
 1. `sudo pacman -S gcc git`
 2. `git clone https://github.com/kecskecheese/koordgeo`<br>
 3. `cd koordgeo`<br>
