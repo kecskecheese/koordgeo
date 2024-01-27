@@ -35,6 +35,7 @@ int Felezopont()
 
     printf("A felezopont elso koordinataja: %lf\nMasodik koordinataja: %lf\n", f1, f2);
 
+    //konzolablak nyitva tartasa (windows miatt fontos)
     puts("Nyomj <enter>-t a kilepeshez\n");
     getchar();
     return 0;
@@ -51,9 +52,9 @@ int Kozbezart()
     scanf("%lf", &a1);
     printf("Add meg az 'A' vektor masodik koordinatajat, tizedesjel: '.'\n");
     scanf("%lf", &a2);
-    printf("Add meg az 'B' vektor elso koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg a 'B' vektor elso koordinatajat, tizedesjel: '.'\n");
     scanf("%lf", &b1);
-    printf("Add meg az 'B' vektor masodik koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg a 'B' vektor masodik koordinatajat, tizedesjel: '.'\n");
     scanf("%lf", &b2);
 
     //szamolas
@@ -72,6 +73,7 @@ int Kozbezart()
 
     printf("A ket vektor kozbezart szoge %lf fok.\n", szog);
 
+    //konzolablak nyitva tartasa (windows miatt fontos)
     puts("Nyomj <enter>-t a kilepeshez\n");
     getchar();
     return 0;
@@ -89,7 +91,7 @@ int Sokadolopont()
     scanf("%i:%i", &arany1, &arany2);
     printf("Ird be az 'A' pont koordinatait ','-vel elvalasztva, tizedesjel: '.'\n");
     scanf("%lf,%lf", &a1, &a2);
-    printf("Ird be az 'B' pont koordinatait ','-vel elvalasztva, tizedesjel: '.'\n");
+    printf("Ird be a 'B' pont koordinatait ','-vel elvalasztva, tizedesjel: '.'\n");
     scanf("%lf,%lf", &b1, &b2);
 
     //szamolas
@@ -101,6 +103,7 @@ int Sokadolopont()
 
     printf("Az n-edelo pont ket koordinataja: %lf, %lf\n", f1, f2);
 
+    //konzolablak nyitva tartasa (windows miatt fontos)
     puts("Nyomj <enter>-t a kilepeshez\n");
     getchar();
     return 0;
@@ -119,13 +122,13 @@ int Haromszog()
     scanf("%lf", &a1);
     printf("Add meg az 'A' pont masodik koordinatajat, tizedesjel: '.'\n");
     scanf("%lf", &a2);
-    printf("Add meg az 'B' pont elso koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg a 'B' pont elso koordinatajat, tizedesjel: '.'\n");
     scanf("%lf", &b1);
-    printf("Add meg az 'B' pont masodik koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg a 'B' pont masodik koordinatajat, tizedesjel: '.'\n");
     scanf("%lf", &b2);
-    printf("Add meg az 'C' pont elso koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg a 'C' pont elso koordinatajat, tizedesjel: '.'\n");
     scanf("%lf", &c1);
-    printf("Add meg az 'C' pont masodik koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg a 'C' pont masodik koordinatajat, tizedesjel: '.'\n");
     scanf("%lf", &c2);
 
     //szamolas
@@ -196,6 +199,60 @@ int Haromszog()
     return 0;
 }
 
+//osszeadas
+int Osszeadas()
+{
+    //adatbevitel
+    double a1, a2, b1, b2, osszeg1, osszeg2;
+    printf("Add meg az 'A' vektor elso koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &a1);
+    printf("Add meg az 'A' vektor masodik koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &a2);
+    printf("Add meg a 'B' vektor elso koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &b1);
+    printf("Add meg a 'B' vektor masodik koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &b2);
+
+    //szamolas
+    osszeg1 = a1 + b1;
+    osszeg2 = a2 + b2;
+
+    //kiiras
+    printf("Az osszeg elso koordinataja: %lf, masodik koordinataja: %lf\n", osszeg1, osszeg2);
+
+    //konzolablak nyitva tartasa (windows miatt fontos)
+    puts("Nyomj <enter>-t a kilepeshez\n");
+    getchar();
+    return 0;
+}
+
+//kivonas
+int Kivonas()
+{
+    //adatbevitel
+    double a1, a2, b1, b2, kulonbseg1, kulonbseg2;
+    printf("Add meg a kissebbitendo vektor elso koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &a1);
+    printf("Add meg a kissebbitendo vektor masodik koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &a2);
+    printf("Add meg a kivonando vektor elso koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &b1);
+    printf("Add meg a kivonando vektor masodik koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &b2);
+
+    //szamolas
+    kulonbseg1 = a1 - b1;
+    kulonbseg2 = a2 - b2;
+
+    //kiiras
+    printf("Az kulonbseg elso koordinataja: %lf, masodik koordinataja: %lf\n", kulonbseg1, kulonbseg2);
+
+    //konzolablak nyitva tartasa (windows miatt fontos)
+    puts("Nyomj <enter>-t a kilepeshez\n");
+    getchar();
+    return 0;
+}
+
 
 int main()
 {
@@ -203,25 +260,32 @@ int main()
 
     int valasz;
     printf("Milyen tipusu feladatot szeretnel megoldani?\n");
-    printf("1. Ket vektor felezopontja\n2. Egy koordinatakban megadott haromszog K, s, T, oldalvektorai, oldalhosszai, beirhato es korulirhato kor sugara, oldalhoz tartozo magassagai, sulypontjanak koordinatai, szogei\n3. Ket vektor kozbezart szoge\n4. Ket vektor n-edelo pontja (pl negyedelo)\n");
+    printf("1. Ket vektor osszeadasa\n2. Ket vektor kulonbsege\n3. Ket vektor felezopontja\n4. Ket vektor n-edelo pontja (pl negyedelo)\n5. Ket vektor kozbezart szoge\n6. Egy koordinatakban megadott haromszog K, s, T, oldalvektorai, oldalhosszai, beirhato es korulirhato kor sugara, oldalhoz tartozo magassagai, sulypontjanak koordinatai, szogei\n");
     scanf("%i", &valasz);
     printf("%i\n", valasz);
 
     //valasztott funkcio futtatasa (tokeletes megvalositas xD)
     if(valasz == 1)
     {
-        Felezopont();
+        Osszeadas();
     }else if(valasz == 2)
     {
-        Haromszog();
+        Kivonas();
     }else if(valasz == 3)
     {
-        Kozbezart();
+        Felezopont();
     }else if(valasz == 4)
     {
         Sokadolopont();
+    }else if(valasz == 5)
+    {
+        Kozbezart();
+    }else if(valasz == 6)
+    {
+        Haromszog();
     }
 
+    //konzolablak nyitva tartasa (windows miatt fontos)
     getchar();
     return 0;
 }
