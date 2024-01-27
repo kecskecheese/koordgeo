@@ -25,7 +25,7 @@ Egyszerű koordináta geometria feladatok megoldása.
 4. Majd a következőt a futtatáshoz: `út_a_filehoz/koordgeo-linux64`
 ### Android (Termux)
 Ez kicsit bonyolultabb, de szükséges az androidon való futtatáshoz.
-1. Telepítsd a [Termux-ot](https://f-droid.org/packages/com.termux/) Fontos, hogy ne a Play storeból telepítsd, mert ott régi verzió van.3. Egy koordinatakban megadott haromszog sulypontja\n
+1. Telepítsd a [Termux-ot](https://f-droid.org/packages/com.termux/) Fontos, hogy ne a Play storeból telepítsd, mert ott régi verzió van.
 2. Futtasd a következőket:
 3. `pkg install git gcc`
 4. `git clone https://github.com/kecskecheese/koordgeo`
