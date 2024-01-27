@@ -1,54 +1,14 @@
 #include <stdio.h>
 #include <math.h>
 
+
+//fuggveny egy szam negyzetenek szamolasara
 double Negyzet(int szam)
 {
     return szam * szam;
 }
 
-int Kerulet()
-{
-    double a1, a2, b1, b2, c1, c2;
-
-    //adatbevitel
-
-    printf("Add meg az 'A' pont elso koordinatajat, tizedesjel: '.'\n");
-    scanf("%lf", &a1);
-    printf("Add meg az 'A' pont masodik koordinatajat, tizedesjel: '.'\n");
-    scanf("%lf", &a2);
-    printf("Add meg az 'B' pont elso koordinatajat, tizedesjel: '.'\n");
-    scanf("%lf", &b1);
-    printf("Add meg az 'B' pont masodik koordinatajat, tizedesjel: '.'\n");
-    scanf("%lf", &b2);
-    printf("Add meg az 'C' pont elso koordinatajat, tizedesjel: '.'\n");
-    scanf("%lf", &c1);
-    printf("Add meg az 'C' pont masodik koordinatajat, tizedesjel: '.'\n");
-    scanf("%lf", &c2);
-
-    //szamolas
-
-    double oldalA1, oldalA2, oldalB1, oldalB2, oldalC1, oldalC2, hosszA, hosszB, hosszC, K, s;
-
-    oldalC1 = c1 - a1;
-    oldalC2 = c2 - a2;
-    oldalB1 = b1 - a1;
-    oldalB2 = b2 - a2;
-    oldalA1 = c1 - b1;
-    oldalA2 = c2 - b2;
-
-    hosszA = sqrt(Negyzet(oldalA1) + Negyzet(oldalA2));
-    hosszB = sqrt(Negyzet(oldalB1) + Negyzet(oldalB2));
-    hosszC = sqrt(Negyzet(oldalC1) + Negyzet(oldalC2));
-
-    K = hosszA + hosszB + hosszC;
-    s = K / 2;
-
-    //kiiras
-
-    printf("A haromszog kerulete: %lf a keruletenek fele: %lf\n", K, s);
-    return 0;
-}
-
+// ket koordinata felezopontjanak kiszamolasa
 int Felezopont()
 {
     double a1, a2, b1, b2;
@@ -75,42 +35,12 @@ int Felezopont()
 
     printf("A felezopont elso koordinataja: %lf\nMasodik koordinataja: %lf\n", f1, f2);
 
+    puts("Nyomj <enter>-t a kilepeshez\n");
+    getchar();
     return 0;
 }
 
-int Sulypont()
-{
-    double a1, a2, b1, b2, c1, c2;
-    
-    //adatbevitel
-
-    printf("Add meg az 'A' pont elso koordinatajat, tizedesjel: '.'\n");
-    scanf("%lf", &a1);
-    printf("Add meg az 'A' pont masodik koordinatajat, tizedesjel: '.'\n");
-    scanf("%lf", &a2);
-    printf("Add meg az 'B' pont elso koordinatajat, tizedesjel: '.'\n");
-    scanf("%lf", &b1);
-    printf("Add meg az 'B' pont masodik koordinatajat, tizedesjel: '.'\n");
-    scanf("%lf", &b2);
-    printf("Add meg az 'C' pont elso koordinatajat, tizedesjel: '.'\n");
-    scanf("%lf", &c1);
-    printf("Add meg az 'C' pont masodik koordinatajat, tizedesjel: '.'\n");
-    scanf("%lf", &c2);
-    
-
-    //szamolas
-
-    double s1, s2;
-    s1 = (a1 + b1 + c1) / 3;
-    s2 = (a2 + b2 + c2) / 3;
-
-    //kiiras
-
-    printf("A sulypont elso koordinataja: %lf\nMasodik koordinataja: %lf\n", s1, s2);
-
-    return 0;
-}
-
+//ket vektor kozbezart szoge
 int Kozbezart()
 {
     double a1, a2, b1, b2;
@@ -142,9 +72,12 @@ int Kozbezart()
 
     printf("A ket vektor kozbezart szoge %lf fok.\n", szog);
 
+    puts("Nyomj <enter>-t a kilepeshez\n");
+    getchar();
     return 0;
 }
 
+//ket vektor n-edelo pontja
 int Sokadolopont()
 {
     int arany1, arany2;
@@ -168,8 +101,101 @@ int Sokadolopont()
 
     printf("Az n-edelo pont ket koordinataja: %lf, %lf\n", f1, f2);
 
+    puts("Nyomj <enter>-t a kilepeshez\n");
+    getchar();
     return 0;
 }
+
+//koordinatakban megadott haromszog: K, s, T, szogek, r, R, oldalhosszak, oldalvektorok, m, sulypont
+
+int Haromszog()
+{
+    //adatbevitel
+
+    double a1, a2, b1, b2, c1, c2, K, s, T, alfa, beta, gamma, cosalfa, cosbeta, cosgamma, hosszA, hosszB, hosszC, ma, mb, mc, oldalA1, oldalA2, oldalB1, oldalB2, oldalC1, oldalC2, s1, s2, r, R;
+    const double PI =  3.1415926;
+
+    printf("Add meg az 'A' pont elso koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &a1);
+    printf("Add meg az 'A' pont masodik koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &a2);
+    printf("Add meg az 'B' pont elso koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &b1);
+    printf("Add meg az 'B' pont masodik koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &b2);
+    printf("Add meg az 'C' pont elso koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &c1);
+    printf("Add meg az 'C' pont masodik koordinatajat, tizedesjel: '.'\n");
+    scanf("%lf", &c2);
+
+    //szamolas
+
+    //oldalvektorok
+    oldalC1 = b1 - a1;
+    oldalC2 = b2 - a2;
+    oldalB1 = c1 - a1;
+    oldalB2 = c2 - a2;
+    oldalA1 = c1 - b1;
+    oldalA2 = c2 - b2;
+
+    //oldalhosszak
+    hosszA = sqrt(Negyzet(oldalA1) + Negyzet(oldalA2));
+    hosszB = sqrt(Negyzet(oldalB1) + Negyzet(oldalB2));
+    hosszC = sqrt(Negyzet(oldalC1) + Negyzet(oldalC2));
+
+    //kerulet es kerulet fele
+    K = hosszA + hosszB + hosszC;
+    s = K / 2;
+
+    //terulet
+    T = sqrt(s * (s - hosszA) * (s - hosszB) * (s - hosszC));
+
+    //beirhato kor sugara
+    r = T / s;
+
+    //korulirhato kor sugara
+    R = (hosszA * hosszB * hosszC) / (4 * T);
+
+    //oldalhoz tartozo magassagok
+    ma = (2 * T) / hosszA;
+    mb = (2 * T) / hosszB;
+    mc = (2 * T) / hosszC;
+
+    //szogek
+    cosalfa = ((oldalB1 * oldalC1) + (oldalB2 * oldalC2)) / (hosszB * hosszC);
+    alfa = acos(cosalfa) * 180 / PI;
+    cosbeta = ((oldalA1 * oldalC1) + (oldalA2 * oldalC2)) / (hosszA * hosszC);
+    beta = acos(cosbeta) * 180 / PI;
+    cosgamma = ((oldalB1 * oldalA1) + (oldalB2 * oldalA2)) / (hosszB * hosszA);
+    gamma = acos(cosgamma) * 180 / PI;
+
+    //sulypont
+    s1 = (a1 + b1 + c1) / 3;
+    s2 = (a2 + b2 + c2) / 3;
+
+    //kiiras
+
+    printf("Az 'a' oldal koordinatai: %lf, %lf\n", oldalA1, oldalA2);
+    printf("A 'b' oldal koordinatai: %lf, %lf\n", oldalB1, oldalB2);
+    printf("A 'c' oldal koordinatai: %lf, %lf\n", oldalC1, oldalC2);
+    printf("Az 'a' oldal hossza: %lf\n", hosszA);
+    printf("A 'b' oldal hossza: %lf\n", hosszB);
+    printf("A 'c' oldal hossza: %lf\n", hosszC);
+    printf("A haromszog kerulete: %lf, es keruletenek fele: %lf\n", K, s);
+    printf("A haromszog terulete: %lf\n", T);
+    printf("A haromszogbe beirhato kor sugara: %lf, es a koreirhato kor sugara: %lf\n", r, R);
+    printf("Az 'a' oldalhoz tartozo magassag: %lf\n", ma);
+    printf("A 'b' oldalhoz tartozo magassag: %lf\n", mb);
+    printf("A 'c' oldalhoz tartozo magassag: %lf\n", mc);
+    printf("A haromszog sulypontjanak koordinatai: %lf, %lf\n", s1, s2);
+    printf("A haromszog szogei, alfa: %lf fok, beta: %lf fok, gamma: %lf fok\n", alfa, beta, gamma);
+
+    //konzolablak nyitva tartasa (windows miatt fontos)
+    puts("Nyomj <enter>-t a kilepeshez\n");
+    getchar();
+    return 0;
+}
+
 
 int main()
 {
@@ -177,7 +203,7 @@ int main()
 
     int valasz;
     printf("Milyen tipusu feladatot szeretnel megoldani?\n");
-    printf("1. Ket vektor felezopontja\n2. Egy koordinatakban megadott haromszog kerulete\n3. Egy koordinatakban megadott haromszog sulypontja\n4. Ket vektor kozbezart szoge\n5. Ket vektor n-edelo pontja (pl negyedelo)\n");
+    printf("1. Ket vektor felezopontja\n2. Egy koordinatakban megadott haromszog K, s, T, oldalvektorai, oldalhosszai, beirhato es korulirhato kor sugara, oldalhoz tartozo magassagai, sulypontjanak koordinatai, szogei\n3. Ket vektor kozbezart szoge\n4. Ket vektor n-edelo pontja (pl negyedelo)\n");
     scanf("%i", &valasz);
     printf("%i\n", valasz);
 
@@ -187,18 +213,16 @@ int main()
         Felezopont();
     }else if(valasz == 2)
     {
-        Kerulet();
+        Haromszog();
     }else if(valasz == 3)
     {
-        Sulypont();
-    }else if(valasz == 4)
-    {
         Kozbezart();
-    }else if(valasz == 5)
+    }else if(valasz == 4)
     {
         Sokadolopont();
     }
-    
+
+    getchar();
     return 0;
 }
 
