@@ -95,7 +95,7 @@ int Sokadolopont()
     scanf("%lf,%lf", &b1, &b2);
 
     //szamolas
-    
+
     f1 = (arany2 * a1 + arany1 * b1) / (arany1 + arany2);
     f2 = (arany2 * a2 + arany1 * b2) / (arany1 + arany2);
 
@@ -264,26 +264,32 @@ int main()
     scanf("%i", &valasz);
     printf("%i\n", valasz);
 
-    //valasztott funkcio futtatasa (tokeletes megvalositas xD)
-    if(valasz == 1)
-    {
-        Osszeadas();
-    }else if(valasz == 2)
-    {
-        Kivonas();
-    }else if(valasz == 3)
-    {
-        Felezopont();
-    }else if(valasz == 4)
-    {
-        Sokadolopont();
-    }else if(valasz == 5)
-    {
-        Kozbezart();
-    }else if(valasz == 6)
-    {
-        Haromszog();
-    }
+    //valasztott funkcio futtatasa (tokeletes megvalositas)
+
+
+    switch (valasz) {
+        case 1:
+            Osszeadas();
+            break;
+        case 2:
+            Kivonas();
+            break;
+        case 3:
+            Felezopont();
+            break;
+        case 4:
+            Sokadolopont();
+            break;
+        case 5:
+            Kozbezart();
+            break;
+        case 6:
+            Haromszog();
+            break;
+        default:
+            printf("Nem jo szamot adtal meg.");
+
+}
 
     //konzolablak nyitva tartasa (windows miatt fontos)
     getchar();
