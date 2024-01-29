@@ -6,4 +6,4 @@ windows: main.c
 
 clean:
 	rm -f koordgeo-win64.exe
-	rm -f koordgeo-linux64
+	rm -f koordgeo-linux64.bin
