@@ -91,11 +91,11 @@ int Sokadolopont()
 
     //adatbevitel
 
-    printf("Írd be a pont es a vektorok arányát ':'-al elválasztva (pl AS:SB 1:3 amiben 'S' az n-edelo pont, negyedelo pont eseten)\n");
+    printf("Írd be a pont es a vektorok arányát ':'-al elválasztva (pl AS:SB 1:3 amiben 'S' az n-edelő pont, negyedelő pont esetén)\n");
     scanf("%i:%i", &arany1, &arany2);
-    printf("Ird be az 'A' pont koordinatait ','-vel elvalasztva, tizedesjel: '.'\n");
+    printf("Ird be az 'A' pont koordinátáit ','-vel elválasztva, tizedesjel: '.'\n");
     scanf("%lf,%lf", &a1, &a2);
-    printf("Ird be a 'B' pont koordinatait ','-vel elvalasztva, tizedesjel: '.'\n");
+    printf("Ird be a 'B' pont koordinátáit ','-vel elvalásztva, tizedesjel: '.'\n");
     scanf("%lf,%lf", &b1, &b2);
 
     //szamolas
@@ -105,7 +105,7 @@ int Sokadolopont()
 
     //kiiras
 
-    printf("Az n-edelo pont két koordinátája: %lf, %lf\n", f1, f2);
+    printf("Az n-edelő pont két koordinátája: %lf, %lf\n", f1, f2);
 
     //konzolablak nyitva tartasa (windows miatt fontos)
     puts("Nyomj <enter>-t a kilépéshez\n");
@@ -182,20 +182,20 @@ int Haromszog()
 
     //kiiras
 
-    printf("Az 'a' oldal koordinatai: %lf, %lf\n", oldalA1, oldalA2);
-    printf("A 'b' oldal koordinatai: %lf, %lf\n", oldalB1, oldalB2);
-    printf("A 'c' oldal koordinatai: %lf, %lf\n", oldalC1, oldalC2);
+    printf("Az 'a' oldal koordinátái: %lf, %lf\n", oldalA1, oldalA2);
+    printf("A 'b' oldal koordinátái: %lf, %lf\n", oldalB1, oldalB2);
+    printf("A 'c' oldal koordinátái: %lf, %lf\n", oldalC1, oldalC2);
     printf("Az 'a' oldal hossza: %lf\n", hosszA);
     printf("A 'b' oldal hossza: %lf\n", hosszB);
     printf("A 'c' oldal hossza: %lf\n", hosszC);
-    printf("A haromszog kerulete: %lf, es keruletenek fele: %lf\n", K, s);
-    printf("A haromszog terulete: %lf\n", T);
-    printf("A haromszogbe beirható kor sugara: %lf, es a koreirhato kor sugara: %lf\n", r, R);
-    printf("Az 'a' oldalhoz tartozo magassag: %lf\n", ma);
-    printf("A 'b' oldalhoz tartozo magassag: %lf\n", mb);
-    printf("A 'c' oldalhoz tartozo magassag: %lf\n", mc);
-    printf("A haromszog súlypontjának koordinatai: %lf, %lf\n", s1, s2);
-    printf("A haromszog szögei, alfa: %lf fok, beta: %lf fok, gamma: %lf fok\n", alfa, beta, gamma);
+    printf("A háromszög kerülete: %lf, es kerületének fele: %lf\n", K, s);
+    printf("A háromszög területe: %lf\n", T);
+    printf("A háromszögbe beírható kör sugara: %lf, és a köréírható kör sugara: %lf\n", r, R);
+    printf("Az 'a' oldalhoz tartozó magasság: %lf\n", ma);
+    printf("A 'b' oldalhoz tartozó magasság: %lf\n", mb);
+    printf("A 'c' oldalhoz tartozó magasság: %lf\n", mc);
+    printf("A háromszög súlypontjának koordinátái: %lf, %lf\n", s1, s2);
+    printf("A háromszög szögei, alfa: %lf fok, beta: %lf fok, gamma: %lf fok\n", alfa, beta, gamma);
 
     //konzolablak nyitva tartasa (windows miatt fontos)
     puts("Nyomj <enter>-t a kilépéshez\n");
@@ -270,7 +270,7 @@ int main() {
 
     int valasz;
     printf("Milyen típusú feladatot szeretnél megoldani?\n");
-    printf("1. Két vektor összeadása\n2. Két vektor különbsége\n3. Két vektor felezőpontja\n4. Két vektor n-edelő pontja (pl negyedelő)\n5. Két vektor közbezárt szöge\n6. Egy koordinatakban megadott haromszog K, s, T, oldalvektorai, oldalhosszai, beirható es körülírható kor sugara, oldalhoz tartozo magassagai, súlypontjának koordinatai, szögei\n");
+    printf("1. Két vektor összeadása\n2. Két vektor különbsége\n3. Két vektor felezőpontja\n4. Két vektor n-edelő pontja (pl negyedelő)\n5. Két vektor közbezárt szöge\n6. Egy koordinatakban megadott háromszög K, s, T, oldalvektorai, oldalhosszai, beírható es körülírható kör sugara, oldalhoz tartozo magasságai, súlypontjának koordinátái, szögei\n");
     scanf("%i", &valasz);
     printf("%i\n", valasz);
 
@@ -297,7 +297,7 @@ int main() {
             Haromszog();
             break;
         default:
-            printf("Nem jo szamot adtal meg.");
+            printf("Nem jó számot adtál meg.");
 
 }
 
