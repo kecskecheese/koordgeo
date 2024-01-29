@@ -16,13 +16,13 @@ int Felezopont()
 
     //adatbevitel
 
-    printf("Add meg az 'A' vektor elso koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg az 'A' vektor első koordinátáját, tizedesjel: '.'\n");
     scanf("%lf", &a1);
-    printf("Add meg az 'A' vektor masodik koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg az 'A' vektor második koordinátájat, tizedesjel: '.'\n");
     scanf("%lf", &a2);
-    printf("Add meg a 'B' vektor elso koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg a 'B' vektor első koordinátáját, tizedesjel: '.'\n");
     scanf("%lf", &b1);
-    printf("Add meg a 'B' vektor masodik koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg a 'B' vektor második koordinátáját, tizedesjel: '.'\n");
     scanf("%lf", &b2);
 
     //szamolas
@@ -34,10 +34,10 @@ int Felezopont()
 
     //kiiras
 
-    printf("A felezopont elso koordinataja: %lf\nMasodik koordinataja: %lf\n", f1, f2);
+    printf("A felezőpont első koordinátája: %lf\nMásodik koordinátája: %lf\n", f1, f2);
 
     //konzolablak nyitva tartasa (windows miatt fontos)
-    puts("Nyomj <enter>-t a kilepeshez\n");
+    puts("Nyomj <enter>-t a kilépéshez\n");
     getchar();
     return 0;
 }
@@ -49,13 +49,13 @@ int Kozbezart()
 
     //adatbevitel
 
-    printf("Add meg az 'A' vektor elso koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg az 'A' vektor első koordinátáját, tizedesjel: '.'\n");
     scanf("%lf", &a1);
-    printf("Add meg az 'A' vektor masodik koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg az 'A' vektor második koordinátájat, tizedesjel: '.'\n");
     scanf("%lf", &a2);
-    printf("Add meg a 'B' vektor elso koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg a 'B' vektor első koordinátáját, tizedesjel: '.'\n");
     scanf("%lf", &b1);
-    printf("Add meg a 'B' vektor masodik koordinatajat, tizedesjel: '.'\n");
+    printf("Add meg a 'B' vektor második koordinátáját, tizedesjel: '.'\n");
     scanf("%lf", &b2);
 
     //szamolas
@@ -72,10 +72,10 @@ int Kozbezart()
 
     //kiiras
 
-    printf("A ket vektor kozbezart szoge %lf fok.\n", szog);
+    printf("A két vektor közbezárt szöge %lf fok.\n", szog);
 
     //konzolablak nyitva tartasa (windows miatt fontos)
-    puts("Nyomj <enter>-t a kilepeshez\n");
+    puts("Nyomj <enter>-t a kilépéshez\n");
     getchar();
     return 0;
 }
@@ -88,7 +88,7 @@ int Sokadolopont()
 
     //adatbevitel
 
-    printf("Ird be a pont es a vektorok aranyat ':'-al elvalasztva (pl AS:SB 1:3 amiben 'S' az n-edelo pont, negyedelo pont eseten)\n");
+    printf("Írd be a pont es a vektorok arányát ':'-al elválasztva (pl AS:SB 1:3 amiben 'S' az n-edelo pont, negyedelo pont eseten)\n");
     scanf("%i:%i", &arany1, &arany2);
     printf("Ird be az 'A' pont koordinatait ','-vel elvalasztva, tizedesjel: '.'\n");
     scanf("%lf,%lf", &a1, &a2);
