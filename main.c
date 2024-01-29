@@ -13,7 +13,7 @@ double Negyzet(int szam)
 }
 
 // két koordináta felezopontjanak kiszamolasa
-int Felezopont()
+void Felezopont()
 {
     double a1, a2, b1, b2;
 
@@ -38,15 +38,13 @@ int Felezopont()
     //kiiras
 
     printf("A felezőpont első koordinátája: %lf\nMásodik koordinátája: %lf\n", f1, f2);
-
-    //konzolablak nyitva tartasa (windows miatt fontos)
-    puts("Nyomj <enter>-t a kilépéshez\n");
+    //konzolablak nyitvatartasa windowson
+    #ifdef _WIN32
     getchar();
-    return 0;
+    #endif
 }
-
 //két vektor közbezárt szöge
-int Kozbezart()
+void Kozbezart()
 {
     double a1, a2, b1, b2;
 
@@ -76,15 +74,14 @@ int Kozbezart()
     //kiiras
 
     printf("A két vektor közbezárt szöge %lf fok.\n", szog);
-
-    //konzolablak nyitva tartasa (windows miatt fontos)
-    puts("Nyomj <enter>-t a kilépéshez\n");
+    //konzolablak nyitvatartasa windowson
+    #ifdef _WIN32
     getchar();
-    return 0;
+    #endif
 }
 
 //két vektor n-edelo pontja
-int Sokadolopont()
+void Sokadolopont()
 {
     int arany1, arany2;
     double a1, a2, b1, b2, f1, f2;
@@ -93,10 +90,14 @@ int Sokadolopont()
 
     printf("Írd be a pont es a vektorok arányát ':'-al elválasztva (pl AS:SB 1:3 amiben 'S' az n-edelő pont, negyedelő pont esetén)\n");
     scanf("%i:%i", &arany1, &arany2);
-    printf("Ird be az 'A' pont koordinátáit ','-vel elválasztva, tizedesjel: '.'\n");
-    scanf("%lf,%lf", &a1, &a2);
-    printf("Ird be a 'B' pont koordinátáit ','-vel elvalásztva, tizedesjel: '.'\n");
-    scanf("%lf,%lf", &b1, &b2);
+    printf("Add meg az 'A' vektor első koordinátáját, tizedesjel: '.'\n");
+    scanf("%lf", &a1);
+    printf("Add meg az 'A' vektor második koordinátájat, tizedesjel: '.'\n");
+    scanf("%lf", &a2);
+    printf("Add meg a 'B' vektor első koordinátáját, tizedesjel: '.'\n");
+    scanf("%lf", &b1);
+    printf("Add meg a 'B' vektor második koordinátáját, tizedesjel: '.'\n");
+    scanf("%lf", &b2);
 
     //szamolas
 
@@ -106,16 +107,15 @@ int Sokadolopont()
     //kiiras
 
     printf("Az n-edelő pont két koordinátája: %lf, %lf\n", f1, f2);
-
-    //konzolablak nyitva tartasa (windows miatt fontos)
-    puts("Nyomj <enter>-t a kilépéshez\n");
+    //konzolablak nyitvatartasa windowson
+    #ifdef _WIN32
     getchar();
-    return 0;
+    #endif
 }
 
 //koordinatakban megadott haromszog: K, s, T, szogek, r, R, oldalhosszak, oldalvektorok, m, sulypont
 
-int Haromszog()
+void Haromszog()
 {
     //adatbevitel
 
@@ -196,15 +196,14 @@ int Haromszog()
     printf("A 'c' oldalhoz tartozó magasság: %lf\n", mc);
     printf("A háromszög súlypontjának koordinátái: %lf, %lf\n", s1, s2);
     printf("A háromszög szögei, alfa: %lf fok, beta: %lf fok, gamma: %lf fok\n", alfa, beta, gamma);
-
-    //konzolablak nyitva tartasa (windows miatt fontos)
-    puts("Nyomj <enter>-t a kilépéshez\n");
+    //konzolablak nyitvatartasa windowson
+    #ifdef _WIN32
     getchar();
-    return 0;
+    #endif
 }
 
 //osszeadas
-int Osszeadas()
+void Osszeadas()
 {
     //adatbevitel
     double a1, a2, b1, b2, osszeg1, osszeg2;
@@ -223,15 +222,14 @@ int Osszeadas()
 
     //kiiras
     printf("Az összeg első koordinátája: %lf, második koordinátája: %lf\n", osszeg1, osszeg2);
-
-    //konzolablak nyitva tartasa (windows miatt fontos)
-    puts("Nyomj <enter>-t a kilépéshez\n");
+    //konzolablak nyitvatartasa windowson
+    #ifdef _WIN32
     getchar();
-    return 0;
+    #endif
 }
 
 //kivonas
-int Kivonas()
+void Kivonas()
 {
     //adatbevitel
     double a1, a2, b1, b2, kulonbseg1, kulonbseg2;
@@ -250,11 +248,10 @@ int Kivonas()
 
     //kiiras
     printf("Az különbség első koordinátája: %lf, második koordinátája: %lf\n", kulonbseg1, kulonbseg2);
-
-    //konzolablak nyitva tartasa (windows miatt fontos)
-    puts("Nyomj <enter>-t a kilépéshez\n");
+    //konzolablak nyitvatartasa windowson
+    #ifdef _WIN32
     getchar();
-    return 0;
+    #endif
 }
 
 
@@ -262,7 +259,7 @@ int main() {
 
     //ekezetekhez windows terminalban
     #ifdef _WIN32
-    setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "hu_HU.UTF-8");
     #endif
 
 
@@ -270,7 +267,7 @@ int main() {
 
     int valasz;
     printf("Milyen típusú feladatot szeretnél megoldani?\n");
-    printf("1. Két vektor összeadása\n2. Két vektor különbsége\n3. Két vektor felezőpontja\n4. Két vektor n-edelő pontja (pl negyedelő)\n5. Két vektor közbezárt szöge\n6. Egy koordinatakban megadott háromszög K, s, T, oldalvektorai, oldalhosszai, beírható es körülírható kör sugara, oldalhoz tartozo magasságai, súlypontjának koordinátái, szögei\n");
+    printf("1. Két vektor összeadása\n2. Két vektor különbsége\n3. Két vektor felezőpontja\n4. Két vektor n-edelő pontja (pl negyedelő)\n5. Két vektor közbezárt szöge\n6. Egy koordinátákban megadott háromszög K, s, T, oldalvektorai, oldalhosszai, beírható és körülírható kör sugara, oldalhoz tartozó magasságai, súlypontjának koordinátái, szögei\n");
     scanf("%i", &valasz);
     printf("%i\n", valasz);
 
@@ -302,7 +299,10 @@ int main() {
 }
 
     //konzolablak nyitva tartasa (windows miatt fontos)
+    #ifdef _WIN32
+    printf("Nyomj <enter>-t a kilépéshez.\n");
     getchar();
+    #endif
     return 0;
 }
 
