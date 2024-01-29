@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <locale.h>
 
 
 //fuggveny egy szam negyzetenek szamolasara
@@ -256,6 +257,8 @@ int Kivonas()
 
 int main()
 {
+    //ekezetekhez windows terminalban
+    setlocale(LC_ALL, "");
     //funkcio kivalasztasa
 
     int valasz;
