@@ -1,7 +1,8 @@
 linux: main.c
 	gcc -o koordgeo-linux64.bin main.c -lm
 
-windows: main.c
+# windows cross compiler on arch
+windows_cc: main.c
 	x86_64-w64-mingw32-gcc -o koordgeo-win64.exe main.c -lm
 
 clean:
