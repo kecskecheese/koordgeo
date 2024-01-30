@@ -1,7 +1,7 @@
 # Koordgeo
 Egyszerű koordináta geometria feladatok megoldása.
 ### Eddigi tudás:
-- Két vektor felezőpontjának megadása
+- Két pont felezőpontjának megadása
 - Koordinátákban megadott háromszög
     - Kerület, kerület fele
     - Terület
@@ -11,7 +11,7 @@ Egyszerű koordináta geometria feladatok megoldása.
     - Beírható és köréírható kör sugarai
     - Szögek fokban
 - Két vektor közbezárt szögének megadása
-- Két vektor n-edelő (pl: negyedelő) pontjának megadása
+- Két pont n-edelő (pl: negyedelő) pontjának megadása
 - Két vektor összeadása, kivonása
 ### Még sok mindent tervezek, elég kezdetleges a program
 ## Telepítés
