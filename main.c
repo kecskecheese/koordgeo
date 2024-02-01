@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 
 #ifdef _WIN32
 #include <locale.h>
 #endif
 
-
-//fuggveny egy szam negyzetenek szamolasara
-double Negyzet(int szam)
+//konzolba kiírtak törlése windowson és linuxon
+void clrscr()
 {
-    return szam * szam;
+    system("cls||clear");
 }
 
 // két koordináta felezopontjanak kiszamolasa
 void Felezopont()
 {
+    clrscr();
     double a1, a2, b1, b2;
 
     //adatbevitel
@@ -46,6 +47,7 @@ void Felezopont()
 //két vektor közbezárt szöge
 void Kozbezart()
 {
+    clrscr();
     double a1, a2, b1, b2;
 
     //adatbevitel
@@ -64,8 +66,8 @@ void Kozbezart()
     double szog, cosSzog, hosszA, hosszB;
     const double PI =  3.1415926;
 
-    hosszA = sqrt(Negyzet(a1) + Negyzet(a2));
-    hosszB = sqrt(Negyzet(b1) + Negyzet(b2));
+    hosszA = sqrt(pow(a1, 2) + pow(a2, 2));
+    hosszB = sqrt(pow(b1, 2) + pow(b2, 2));
 
     cosSzog = ((a1 * b1) + (a2 * b2)) / (hosszA * hosszB);
 
@@ -83,6 +85,7 @@ void Kozbezart()
 //két vektor n-edelo pontja
 void Sokadolopont()
 {
+    clrscr();
     int arany1, arany2;
     double a1, a2, b1, b2, f1, f2;
 
@@ -118,6 +121,7 @@ void Sokadolopont()
 
 void Haromszog()
 {
+    clrscr();
     //adatbevitel
 
     float a1, a2, b1, b2, c1, c2, K, s, T, alfa, beta, gamma, cosalfa, cosbeta, cosgamma, hosszA, hosszB, hosszC, ma, mb, mc, oldalA1, oldalA2, oldalB1, oldalB2, oldalC1, oldalC2, s1, s2, r, R, fa1, fa2, fb1, fb2, fc1, fc2, sVonalA1, sVonalA2, sVonalB1, sVonalB2, sVonalC1, sVonalC2, kVonalA1, kVonalA2, kVonalB1, kVonalB2, kVonalC1, kVonalC2, kVonalHosszA, kVonalHosszB, kVonalHosszC, sVonalHosszA, sVonalHosszB, sVonalHosszC;
@@ -157,9 +161,9 @@ void Haromszog()
     fa2 = (c2 + b2) / 2;
 
     //oldalhosszak
-    hosszA = sqrt(Negyzet(oldalA1) + Negyzet(oldalA2));
-    hosszB = sqrt(Negyzet(oldalB1) + Negyzet(oldalB2));
-    hosszC = sqrt(Negyzet(oldalC1) + Negyzet(oldalC2));
+    hosszA = sqrt(pow(oldalA1, 2) + pow(oldalA2, 2));
+    hosszB = sqrt(pow(oldalB1, 2) + pow(oldalB2, 2));
+    hosszC = sqrt(pow(oldalC1, 2) + pow(oldalC2, 2));
 
     //kerulet es kerulet fele
     K = hosszA + hosszB + hosszC;
@@ -198,9 +202,9 @@ void Haromszog()
     kVonalB2 = fc2 - fa2;
     kVonalC1 = fa1 - fb1;
     kVonalC2 = fa2 - fb2;
-    kVonalHosszA = sqrt(Negyzet(kVonalA1) + Negyzet(kVonalA2));
-    kVonalHosszB = sqrt(Negyzet(kVonalB1) + Negyzet(kVonalB2));
-    kVonalHosszC = sqrt(Negyzet(kVonalC1) + Negyzet(kVonalC2));
+    kVonalHosszA = sqrt(pow(kVonalA1, 2) + pow(kVonalA2, 2));
+    kVonalHosszB = sqrt(pow(kVonalB1, 2) + pow(kVonalB2, 2));
+    kVonalHosszC = sqrt(pow(kVonalC1, 2) + pow(kVonalC2, 2));
 
     //sulyvonal
     sVonalA1 = a1 - fa1;
@@ -209,9 +213,9 @@ void Haromszog()
     sVonalB2 = b2 - fb2;
     sVonalC1 = c1 - fc1;
     sVonalC2 = c2 - fc2;
-    sVonalHosszA = sqrt(Negyzet(sVonalA1) + Negyzet(sVonalA2));
-    sVonalHosszB = sqrt(Negyzet(sVonalB1) + Negyzet(sVonalB2));
-    sVonalHosszC = sqrt(Negyzet(sVonalC1) + Negyzet(sVonalC2));
+    sVonalHosszA = sqrt(pow(sVonalA1, 2) + pow(sVonalA2, 2));
+    sVonalHosszB = sqrt(pow(sVonalB1, 2) + pow(sVonalB2, 2));
+    sVonalHosszC = sqrt(pow(sVonalC1, 2) + pow(sVonalC2, 2));
 
     //kiiras
 
@@ -254,6 +258,7 @@ void Haromszog()
 //osszeadas
 void Osszeadas()
 {
+    clrscr();
     //adatbevitel
     double a1, a2, b1, b2, osszeg1, osszeg2;
     printf("Add meg az 'A' vektor első koordinátáját, tizedesjel: '.'\n");
@@ -280,6 +285,7 @@ void Osszeadas()
 //kivonas
 void Kivonas()
 {
+    clrscr();
     //adatbevitel
     double a1, a2, b1, b2, kulonbseg1, kulonbseg2;
     printf("Add meg a kissebbítendő vektor első koordinátáját, tizedesjel: '.'\n");
@@ -306,7 +312,7 @@ void Kivonas()
 
 int main() {
 
-    //ekezetekhez windows terminalban
+    //ekezetekhez a "nagyszeru" windows terminalban
     #ifdef _WIN32
     setlocale(LC_ALL, "hu_HU.UTF-8");
     #endif
@@ -315,13 +321,11 @@ int main() {
     //funkcio kivalasztasa
 
     int valasz;
+    clrscr();
     printf("Milyen típusú feladatot szeretnél megoldani?\n");
     printf("1. Két vektor összeadása\n2. Két vektor különbsége\n3. Két vektor felezőpontja\n4. Két vektor n-edelő pontja (pl negyedelő)\n5. Két vektor közbezárt szöge\n6. Egy koordinátákban megadott háromszög K, s, T, oldalvektorai, oldalhosszai, beírható és körülírható kör sugara, oldalhoz tartozó magasságai, súlypontjának koordinátái, szögei\n");
     scanf("%i", &valasz);
     printf("%i\n", valasz);
-
-    //valasztott funkcio futtatasa (tokeletes megvalositas)
-
 
     switch (valasz) {
         case 1:
@@ -347,7 +351,7 @@ int main() {
 
 }
 
-    //konzolablak nyitva tartasa (windows miatt fontos)
+    //konzolablak nyitva tartasa windowson
     #ifdef _WIN32
     printf("Nyomj <enter>-t a kilépéshez.\n");
     getchar();
