@@ -40,7 +40,7 @@ Ez kicsit bonyolultabb, de szükséges az androidon való futtatáshoz.
 ### Compile
 Ha nincs az architektúrádra futtatható program (pl.: 32-bites operációs rendszert használsz) saját magadnak kell összeállítani a programot
 <br>
-Szükséged lesz `git`-re és `gcc`-re
+Szükséged lesz `git`-re, `gcc`-re és `make`-re
 #### Debian/Ubuntu alapú linux
 1. `sudo apt install gcc git make`<br>
 2. `git clone https://github.com/kecskecheese/koordgeo`<br>
