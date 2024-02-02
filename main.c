@@ -16,29 +16,32 @@ void clrscr()
 void Felezopont()
 {
     clrscr();
-    double a1, a2, b1, b2;
+    float aVektor[2], bVektor[2];
 
     //adatbevitel
 
-    printf("Add meg az 'A' vektor első koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &a1);
-    printf("Add meg az 'A' vektor második koordinátájat, tizedesjel: '.'\n");
-    scanf("%lf", &a2);
-    printf("Add meg a 'B' vektor első koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &b1);
-    printf("Add meg a 'B' vektor második koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &b2);
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg az 'A' vektor %i. koordinátáját\n", i + 1);
+        scanf("%f", &aVektor[i]);
+    }
+
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg a 'B' vektor %i. koordinátáját\n", i + 1);
+        scanf("%f", &bVektor[i]);
+    }
 
     //szamolas
 
-    double f1, f2;
+    float felezo[2];
 
-    f1 = (a1 + b1) / 2;
-    f2 = (a2 + b2) / 2;
+    felezo[0] = (aVektor[0] + bVektor[0]) / 2;
+    felezo[1] = (aVektor[1] + bVektor[1]) / 2;
 
     //kiiras
 
-    printf("A felezőpont első koordinátája: %lf\nMásodik koordinátája: %lf\n", f1, f2);
+    printf("A felezőpont koordinátái: %f, %f", felezo[0], felezo[1]);
     //konzolablak nyitvatartasa windowson
     #ifdef _WIN32
     getchar();
@@ -48,34 +51,35 @@ void Felezopont()
 void Kozbezart()
 {
     clrscr();
-    double a1, a2, b1, b2;
+    float aVektor[2], bVektor[2];
 
     //adatbevitel
 
-    printf("Add meg az 'A' vektor első koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &a1);
-    printf("Add meg az 'A' vektor második koordinátájat, tizedesjel: '.'\n");
-    scanf("%lf", &a2);
-    printf("Add meg a 'B' vektor első koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &b1);
-    printf("Add meg a 'B' vektor második koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &b2);
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg az 'A' vektor %i. koordinátáját\n", i + 1);
+        scanf("%f", &aVektor[i]);
+    }
+
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg a 'B' vektor %i. koordinátáját\n", i + 1);
+        scanf("%f", &bVektor[i]);
+    }
 
     //szamolas
 
-    double szog, cosSzog, hosszA, hosszB;
+    float szog, hosszA, hosszB;
     const double PI =  3.1415926;
 
-    hosszA = sqrt(pow(a1, 2) + pow(a2, 2));
-    hosszB = sqrt(pow(b1, 2) + pow(b2, 2));
+    hosszA = sqrt(pow(aVektor[0], 2) + pow(aVektor[1], 2));
+    hosszB = sqrt(pow(bVektor[0], 2) + pow(bVektor[1], 2));
 
-    cosSzog = ((a1 * b1) + (a2 * b2)) / (hosszA * hosszB);
-
-    szog = acos(cosSzog) * 180 / PI;
+    szog = acos(((aVektor[0] * bVektor[0]) + (aVektor[1] * bVektor[1])) / (hosszA * hosszB)) * 180 / PI;
 
     //kiiras
 
-    printf("A két vektor közbezárt szöge %lf fok.\n", szog);
+    printf("A két vektor közbezárt szöge %f fok.\n", szog);
     //konzolablak nyitvatartasa windowson
     #ifdef _WIN32
     getchar();
@@ -86,30 +90,33 @@ void Kozbezart()
 void Sokadolopont()
 {
     clrscr();
-    int arany1, arany2;
-    double a1, a2, b1, b2, f1, f2;
+    int arany[2];
+    float sokadolo[2], aVektor[2], bVektor[2];
 
     //adatbevitel
 
     printf("Írd be a pont es a vektorok arányát ':'-al elválasztva (pl AS:SB 1:3 amiben 'S' az n-edelő pont, negyedelő pont esetén)\n");
-    scanf("%i:%i", &arany1, &arany2);
-    printf("Add meg az 'A' vektor első koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &a1);
-    printf("Add meg az 'A' vektor második koordinátájat, tizedesjel: '.'\n");
-    scanf("%lf", &a2);
-    printf("Add meg a 'B' vektor első koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &b1);
-    printf("Add meg a 'B' vektor második koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &b2);
+    scanf("%i:%i", &arany[0], &arany[1]);
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg az 'A' vektor %i. koordinátáját\n", i + 1);
+        scanf("%f", &aVektor[i]);
+    }
+
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg a 'B' vektor %i. koordinátáját\n", i + 1);
+        scanf("%f", &bVektor[i]);
+    }
 
     //szamolas
 
-    f1 = (arany2 * a1 + arany1 * b1) / (arany1 + arany2);
-    f2 = (arany2 * a2 + arany1 * b2) / (arany1 + arany2);
+    sokadolo[0] = (arany[1] * aVektor[0] + arany[0] * bVektor[0]) / (arany[0] + arany[1]);
+    sokadolo[1] = (arany[1] * aVektor[1] + arany[0] * bVektor[1]) / (arany[0] + arany[1]);
 
     //kiiras
 
-    printf("Az n-edelő pont két koordinátája: %lf, %lf\n", f1, f2);
+    printf("Az n-edelő pont két koordinátája: %f, %f\n", sokadolo[0], sokadolo[1]);
     //konzolablak nyitvatartasa windowson
     #ifdef _WIN32
     getchar();
@@ -260,22 +267,25 @@ void Osszeadas()
 {
     clrscr();
     //adatbevitel
-    double a1, a2, b1, b2, osszeg1, osszeg2;
-    printf("Add meg az 'A' vektor első koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &a1);
-    printf("Add meg az 'A' vektor második koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &a2);
-    printf("Add meg a 'B' vektor első koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &b1);
-    printf("Add meg a 'B' vektor második koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &b2);
+    float aVektor[2], bVektor[2], osszeg[2];
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg az 'A' vektor %i. koordinátáját\n", i + 1);
+        scanf("%f", &aVektor[i]);
+    }
+
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg a 'B' vektor %i. koordinátáját\n", i + 1);
+        scanf("%f", &bVektor[i]);
+    }
 
     //szamolas
-    osszeg1 = a1 + b1;
-    osszeg2 = a2 + b2;
+    osszeg[0] = aVektor[0] + bVektor[0];
+    osszeg[1] = aVektor[1] + bVektor[1];
 
     //kiiras
-    printf("Az összeg első koordinátája: %lf, második koordinátája: %lf\n", osszeg1, osszeg2);
+    printf("Az összeg koordinátái: %f, %f\n", osszeg[0], osszeg[1]);
     //konzolablak nyitvatartasa windowson
     #ifdef _WIN32
     getchar();
@@ -287,22 +297,25 @@ void Kivonas()
 {
     clrscr();
     //adatbevitel
-    double a1, a2, b1, b2, kulonbseg1, kulonbseg2;
-    printf("Add meg a kissebbítendő vektor első koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &a1);
-    printf("Add meg a kissebbítendő vektor második koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &a2);
-    printf("Add meg a kivonandó vektor első koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &b1);
-    printf("Add meg a kivonandó vektor második koordinátáját, tizedesjel: '.'\n");
-    scanf("%lf", &b2);
+    float aVektor[2], bVektor[2], kulonbseg[2];
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg a kissebbítendő vektor %i. koordinátáját\n", i + 1);
+        scanf("%f", &aVektor[i]);
+    }
+
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg a kivonandó vektor %i. koordinátáját\n", i + 1);
+        scanf("%f", &bVektor[i]);
+    }
 
     //szamolas
-    kulonbseg1 = a1 - b1;
-    kulonbseg2 = a2 - b2;
+    kulonbseg[0] = aVektor[0] - bVektor[0];
+    kulonbseg[1] = aVektor[1] - bVektor[1];
 
     //kiiras
-    printf("Az különbség első koordinátája: %lf, második koordinátája: %lf\n", kulonbseg1, kulonbseg2);
+    printf("Az összeg koordinátái: %f, %f\n", kulonbseg[0], kulonbseg[1]);
     //konzolablak nyitvatartasa windowson
     #ifdef _WIN32
     getchar();
