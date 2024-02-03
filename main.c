@@ -6,6 +6,16 @@
 #include <locale.h>
 #endif
 
+struct Vektor
+{
+    float x, y;
+};
+
+struct Haromadat
+{
+    float a, b, c;
+};
+
 //konzolba kiírtak törlése windowson és linuxon
 void clrscr()
 {
@@ -16,8 +26,8 @@ void clrscr()
 void Felezopont()
 {
     clrscr();
-    float aVektor[2], bVektor[2];
-
+    struct Vektor felezo;
+    float aVektor[2], bVektor[2]; // a beolvasás szépsége miatt így hagynám struct helyett, nemtudom mennyire hülyeség
     //adatbevitel
 
     for (int i = 0; i < 2; i++)
@@ -34,14 +44,12 @@ void Felezopont()
 
     //szamolas
 
-    float felezo[2];
-
-    felezo[0] = (aVektor[0] + bVektor[0]) / 2;
-    felezo[1] = (aVektor[1] + bVektor[1]) / 2;
+    felezo.x = (aVektor[0] + bVektor[0]) / 2;
+    felezo.y = (aVektor[1] + bVektor[1]) / 2;
 
     //kiiras
-
-    printf("A felezőpont koordinátái: %f, %f", felezo[0], felezo[1]);
+    clrscr();
+    printf("A felezőpont koordinátái: %f, %f", felezo.x, felezo.y);
     //konzolablak nyitvatartasa windowson
     #ifdef _WIN32
     getchar();
@@ -69,16 +77,17 @@ void Kozbezart()
 
     //szamolas
 
-    float szog, hosszA, hosszB;
+    struct Vektor hossz; //tudom, hogy vektor a struct neve, de ha már van használjuk
+    float szog;
     const double PI =  3.1415926;
 
-    hosszA = sqrt(pow(aVektor[0], 2) + pow(aVektor[1], 2));
-    hosszB = sqrt(pow(bVektor[0], 2) + pow(bVektor[1], 2));
+    hossz.x = sqrt(pow(aVektor[0], 2) + pow(aVektor[1], 2));
+    hossz.y = sqrt(pow(bVektor[0], 2) + pow(bVektor[1], 2));
 
-    szog = acos(((aVektor[0] * bVektor[0]) + (aVektor[1] * bVektor[1])) / (hosszA * hosszB)) * 180 / PI;
+    szog = acos(((aVektor[0] * bVektor[0]) + (aVektor[1] * bVektor[1])) / (hossz.x * hossz.y)) * 180 / PI;
 
     //kiiras
-
+    clrscr();
     printf("A két vektor közbezárt szöge %f fok.\n", szog);
     //konzolablak nyitvatartasa windowson
     #ifdef _WIN32
@@ -90,8 +99,10 @@ void Kozbezart()
 void Sokadolopont()
 {
     clrscr();
+    struct Vektor sokadolo;
+    
     int arany[2];
-    float sokadolo[2], aVektor[2], bVektor[2];
+    float aVektor[2], bVektor[2];
 
     //adatbevitel
 
@@ -111,12 +122,12 @@ void Sokadolopont()
 
     //szamolas
 
-    sokadolo[0] = (arany[1] * aVektor[0] + arany[0] * bVektor[0]) / (arany[0] + arany[1]);
-    sokadolo[1] = (arany[1] * aVektor[1] + arany[0] * bVektor[1]) / (arany[0] + arany[1]);
+    sokadolo.x = (arany[1] * aVektor[0] + arany[0] * bVektor[0]) / (arany[0] + arany[1]);
+    sokadolo.y = (arany[1] * aVektor[1] + arany[0] * bVektor[1]) / (arany[0] + arany[1]);
 
     //kiiras
-
-    printf("Az n-edelő pont két koordinátája: %f, %f\n", sokadolo[0], sokadolo[1]);
+    clrscr();
+    printf("Az n-edelő pont két koordinátája: %f, %f\n", sokadolo.x, sokadolo.y);
     //konzolablak nyitvatartasa windowson
     #ifdef _WIN32
     getchar();
@@ -131,130 +142,137 @@ void Haromszog()
     clrscr();
     //adatbevitel
 
-    float a1, a2, b1, b2, c1, c2, K, s, T, alfa, beta, gamma, cosalfa, cosbeta, cosgamma, hosszA, hosszB, hosszC, ma, mb, mc, oldalA1, oldalA2, oldalB1, oldalB2, oldalC1, oldalC2, s1, s2, r, R, fa1, fa2, fb1, fb2, fc1, fc2, sVonalA1, sVonalA2, sVonalB1, sVonalB2, sVonalC1, sVonalC2, kVonalA1, kVonalA2, kVonalB1, kVonalB2, kVonalC1, kVonalC2, kVonalHosszA, kVonalHosszB, kVonalHosszC, sVonalHosszA, sVonalHosszB, sVonalHosszC;
+    float aVektor[2], bVektor[2], cVektor[2], K, s, T, r, R;
     const double PI =  3.1415926;
 
-    printf("Add meg az 'A' pont első koordinátáját, tizedesjel: '.'\n");
-    scanf("%f", &a1);
-    printf("Add meg az 'A' pont második koordinátáját, tizedesjel: '.'\n");
-    scanf("%f", &a2);
-    printf("Add meg a 'B' pont első koordinátáját, tizedesjel: '.'\n");
-    scanf("%f", &b1);
-    printf("Add meg a 'B' pont második koordinátáját, tizedesjel: '.'\n");
-    scanf("%f", &b2);
-    printf("Add meg a 'C' pont első koordinátáját, tizedesjel: '.'\n");
-    scanf("%f", &c1);
-    printf("Add meg a 'C' pont második koordinátáját, tizedesjel: '.'\n");
-    scanf("%f", &c2);
+    struct Vektor oldalA, oldalB, oldalC, felezoA, felezoB, felezoC, sulypont, sulyvonalA, sulyvonalB, sulyvonalC, kVonalA, kVonalB, kVonalC;
+    struct Haromadat oHossz, m, szog, sVonalHossz, kVonalHossz; //.a = a oldal, .b = b oldal, stb...
+    
+
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg az 'A' pont %i. koordinátáját\n", i + 1);
+        scanf("%f", &aVektor[i]);
+    }
+
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg a 'B' pont %i. koordinátáját\n", i + 1);
+        scanf("%f", &bVektor[i]);
+    }
+
+    for (int i = 0; i < 2; i++)
+    {
+        printf("Add meg a 'C' pont %i. koordinátáját\n", i + 1);
+        scanf("%f", &cVektor[i]);
+    }
 
     //szamolas
 
     //oldalvektorok
-    oldalC1 = b1 - a1;
-    oldalC2 = b2 - a2;
-    oldalB1 = c1 - a1;
-    oldalB2 = c2 - a2;
-    oldalA1 = c1 - b1;
-    oldalA2 = c2 - b2;
+    oldalC.x = bVektor[0] - aVektor[0];
+    oldalC.y = bVektor[1] - aVektor[1];
+    oldalB.x = cVektor[0] - aVektor[0];
+    oldalB.y = cVektor[1] - aVektor[1];
+    oldalA.x = cVektor[0] - bVektor[0];
+    oldalA.y = cVektor[1] - bVektor[1];
 
     //oldalfelezok
-    fc1 = (a1 + b1) / 2;
-    fc2 = (a2 + b2) / 2;
+    felezoC.x = (aVektor[0] + bVektor[0]) / 2;
+    felezoC.y = (aVektor[1] + bVektor[1]) / 2;
 
-    fb1 = (c1 + a1) / 2;
-    fb2 = (c2 + a2) / 2;
+    felezoB.x = (cVektor[0] + aVektor[0]) / 2;
+    felezoB.y = (cVektor[1] + aVektor[1]) / 2;
 
-    fa1 = (c1 + b1) / 2;
-    fa2 = (c2 + b2) / 2;
+    felezoA.x = (cVektor[0] + bVektor[0]) / 2;
+    felezoA.y = (cVektor[1] + bVektor[1]) / 2;
 
     //oldalhosszak
-    hosszA = sqrt(pow(oldalA1, 2) + pow(oldalA2, 2));
-    hosszB = sqrt(pow(oldalB1, 2) + pow(oldalB2, 2));
-    hosszC = sqrt(pow(oldalC1, 2) + pow(oldalC2, 2));
+    oHossz.a = sqrt(pow(oldalA.x, 2) + pow(oldalA.y, 2));
+    oHossz.b = sqrt(pow(oldalB.x, 2) + pow(oldalB.y, 2));
+    oHossz.c = sqrt(pow(oldalC.x, 2) + pow(oldalC.y, 2));
 
     //kerulet es kerulet fele
-    K = hosszA + hosszB + hosszC;
+    K = oHossz.a + oHossz.b + oHossz.c;
     s = K / 2;
 
     //terulet
-    T = sqrt(s * (s - hosszA) * (s - hosszB) * (s - hosszC));
+    T = sqrt(s * (s - oHossz.a) * (s - oHossz.b) * (s - oHossz.c));
 
     //beirható kor sugara
     r = T / s;
 
     //körülírható kor sugara
-    R = (hosszA * hosszB * hosszC) / (4 * T);
+    R = (oHossz.a * oHossz.b * oHossz.c) / (4 * T);
 
     //oldalhoz tartozo magassagok
-    ma = (2 * T) / hosszA;
-    mb = (2 * T) / hosszB;
-    mc = (2 * T) / hosszC;
+    m.a = (2 * T) / oHossz.a;
+    m.b = (2 * T) / oHossz.b;
+    m.c = (2 * T) / oHossz.c;
 
     //szogek
-    cosalfa = ((oldalB1 * oldalC1) + (oldalB2 * oldalC2)) / (hosszB * hosszC);
-    alfa = acos(cosalfa) * 180 / PI;
-    cosbeta = ((oldalA1 * oldalC1) + (oldalA2 * oldalC2)) / (hosszA * hosszC);
-    beta = acos(cosbeta) * 180 / PI;
-    cosgamma = ((oldalB1 * oldalA1) + (oldalB2 * oldalA2)) / (hosszB * hosszA);
-    gamma = acos(cosgamma) * 180 / PI;
+    szog.a = acos(((oldalB.x * oldalC.x) + (oldalB.y * oldalC.y)) / (oHossz.b * oHossz.c)) * 180 / PI;
+    szog.b = acos(((oldalA.x * oldalC.x) + (oldalA.y * oldalC.y)) / (oHossz.a * oHossz.c)) * 180 / PI;
+    szog.c = acos(((oldalB.x * oldalA.x) + (oldalB.y * oldalA.y)) / (oHossz.b * oHossz.a)) * 180 / PI;
 
     //sulypont
-    s1 = (a1 + b1 + c1) / 3;
-    s2 = (a2 + b2 + c2) / 3;
+    sulypont.x = (aVektor[0] + bVektor[0] + cVektor[0]) / 3;
+    sulypont.y = (aVektor[1] + bVektor[1] + cVektor[1]) / 3;
 
     //kozepvonal
-    kVonalA1 = fc1 - fb1;
-    kVonalA2 = fc2 - fb2;
-    kVonalB1 = fc1 - fa1;
-    kVonalB2 = fc2 - fa2;
-    kVonalC1 = fa1 - fb1;
-    kVonalC2 = fa2 - fb2;
-    kVonalHosszA = sqrt(pow(kVonalA1, 2) + pow(kVonalA2, 2));
-    kVonalHosszB = sqrt(pow(kVonalB1, 2) + pow(kVonalB2, 2));
-    kVonalHosszC = sqrt(pow(kVonalC1, 2) + pow(kVonalC2, 2));
+    kVonalA.x = felezoC.x - felezoB.x;
+    kVonalA.y = felezoC.y - felezoB.y;
+    kVonalB.x = felezoC.x - felezoA.x;
+    kVonalB.y = felezoC.y - felezoA.y;
+    kVonalC.x = felezoA.x - felezoB.x;
+    kVonalC.y = felezoA.y - felezoB.y;
+    kVonalHossz.a = sqrt(pow(kVonalA.x, 2) + pow(kVonalA.y, 2));
+    kVonalHossz.b = sqrt(pow(kVonalB.x, 2) + pow(kVonalB.y, 2));
+    kVonalHossz.c = sqrt(pow(kVonalC.x, 2) + pow(kVonalC.y, 2));
 
     //sulyvonal
-    sVonalA1 = a1 - fa1;
-    sVonalA2 = a2 - fa2;
-    sVonalB1 = b1 - fb1;
-    sVonalB2 = b2 - fb2;
-    sVonalC1 = c1 - fc1;
-    sVonalC2 = c2 - fc2;
-    sVonalHosszA = sqrt(pow(sVonalA1, 2) + pow(sVonalA2, 2));
-    sVonalHosszB = sqrt(pow(sVonalB1, 2) + pow(sVonalB2, 2));
-    sVonalHosszC = sqrt(pow(sVonalC1, 2) + pow(sVonalC2, 2));
+    sulyvonalA.x = aVektor[0] - felezoA.x;
+    sulyvonalA.y = aVektor[1] - felezoA.y;
+    sulyvonalB.x = bVektor[0] - felezoB.x;
+    sulyvonalB.y = bVektor[1] - felezoB.y;
+    sulyvonalC.x = cVektor[0] - felezoC.x;
+    sulyvonalC.y = cVektor[1] - felezoC.y;
+    sVonalHossz.a = sqrt(pow(sulyvonalA.x, 2) + pow(sulyvonalA.y, 2));
+    sVonalHossz.b = sqrt(pow(sulyvonalB.x, 2) + pow(sulyvonalB.y, 2));
+    sVonalHossz.c = sqrt(pow(sulyvonalC.x, 2) + pow(sulyvonalC.y, 2));
 
     //kiiras
+    clrscr();
 
-    printf("Az 'a' oldal koordinátái: %f, %f\n", oldalA1, oldalA2);
-    printf("A 'b' oldal koordinátái: %f, %f\n", oldalB1, oldalB2);
-    printf("A 'c' oldal koordinátái: %f, %f\n", oldalC1, oldalC2);
-    printf("Az 'a' oldal felezőjének koordinátái: %f, %f\n", fa1, fa2);
-    printf("A 'b' oldal felezőjének koordinátái: %f, %f\n", fb1, fb2);
-    printf("A 'c' oldal felezőjének koordinátái: %f, %f\n", fc1, fc2);
-    printf("Az 'a' oldal hossza: %f\n", hosszA);
-    printf("A 'b' oldal hossza: %f\n", hosszB);
-    printf("A 'c' oldal hossza: %f\n", hosszC);
+    printf("Az 'a' oldal koordinátái: %f, %f\n", oldalA.x, oldalA.y);
+    printf("A 'b' oldal koordinátái: %f, %f\n", oldalB.x, oldalB.y);
+    printf("A 'c' oldal koordinátái: %f, %f\n", oldalC.x, oldalC.y);
+    printf("Az 'a' oldal felezőjének koordinátái: %f, %f\n", felezoA.x, felezoA.y);
+    printf("A 'b' oldal felezőjének koordinátái: %f, %f\n", felezoB.x, felezoB.y);
+    printf("A 'c' oldal felezőjének koordinátái: %f, %f\n", felezoC.x, felezoC.y);
+    printf("Az 'a' oldal hossza: %f\n", oHossz.a);
+    printf("A 'b' oldal hossza: %f\n", oHossz.b);
+    printf("A 'c' oldal hossza: %f\n", oHossz.c);
     printf("A háromszög kerülete: %f, es kerületének fele: %f\n", K, s);
     printf("A háromszög területe: %f\n", T);
-    printf("A háromszögbe beírható kör sugara: %f, és a köréírható kör sugara: %f\n", r, R);
-    printf("Az 'a' oldalhoz tartozó magasság: %f\n", ma);
-    printf("A 'b' oldalhoz tartozó magasság: %f\n", mb);
-    printf("A 'c' oldalhoz tartozó magasság: %f\n", mc);
-    printf("A háromszög súlypontjának koordinátái: %f, %f\n", s1, s2);
-    printf("A háromszög szögei, alfa: %f fok, beta: %f fok, gamma: %f fok\n", alfa, beta, gamma);
-    printf("Az a és a b oldalt összekötő középvonal: %f %f\n", kVonalC1, kVonalC2);
-    printf("Az a és a c oldalt összekötő középvonal: %f %f\n", kVonalB1, kVonalB2);
-    printf("A c és a b oldalt összekötő középvonal: %f %f\n", kVonalA1, kVonalA2);
-    printf("Az a és a b oldalt összekötő középvonal hossza: %f\n", kVonalHosszC);
-    printf("Az a és a c oldalt összekötő középvonal hossza: %f\n", kVonalHosszB);
-    printf("A c és a b oldalt összekötő középvonal hossza: %f\n", kVonalHosszA);
-    printf("Az a oldalhoz tartozó súlyvonal: %f, %f\n", sVonalA1, sVonalA2);
-    printf("A b oldalhoz tartozó súlyvonal: %f, %f\n", sVonalB1, sVonalB2);
-    printf("A c oldalhoz tartozó súlyvonal: %f, %f\n", sVonalC1, sVonalC2);
-    printf("Az a oldalhoz tartozó súlyvonal hossza: %f\n", sVonalHosszA);
-    printf("A b oldalhoz tartozó súlyvonal hossza: %f\n", sVonalHosszB);
-    printf("A c oldalhoz tartozó súlyvonal hossza: %f\n", sVonalHosszC);
+    printf("A háromszögbe beírható kör sugara: %f, és a köréírhahosszA, hosszB, hosszC,tó kör sugara: %f\n", r, R);
+    printf("Az 'a' oldalhoz tartozó magasság: %f\n", m.a);
+    printf("A 'b' oldalhoz tartozó magasság: %f\n", m.b);
+    printf("A 'c' oldalhoz tartozó magasság: %f\n", m.c);
+    printf("A háromszög súlypontjának koordinátái: %f, %f\n", sulypont.x, sulypont.y);
+    printf("A háromszög szögei, alfa: %f fok, beta: %f fok, gamma: %f fok\n", szog.a, szog.b, szog.c);
+    printf("Az a és a b oldalt összekötő középvonal: %f %f\n", kVonalC.x, kVonalC.y);
+    printf("Az a és a c oldalt összekötő középvonal: %f %f\n", kVonalB.x, kVonalB.y);
+    printf("A c és a b oldalt összekötő középvonal: %f %f\n", kVonalA.x, kVonalA.y);
+    printf("Az a és a b oldalt összekötő középvonal hossza: %f\n", kVonalHossz.c);
+    printf("Az a és a c oldalt összekötő középvonal hossza: %f\n", kVonalHossz.b);
+    printf("A c és a b oldalt összekötő középvonal hossza: %f\n", kVonalHossz.a);
+    printf("Az a oldalhoz tartozó súlyvonal: %f, %f\n", sulyvonalA.x, sulyvonalA.y);
+    printf("A b oldalhoz tartozó súlyvonal: %f, %f\n", sulyvonalB.x, sulyvonalB.y);
+    printf("A c oldalhoz tartozó súlyvonal: %f, %f\n", sulyvonalC.x, sulyvonalC.y);
+    printf("Az a oldalhoz tartozó súlyvonal hossza: %f\n", sVonalHossz.a);
+    printf("A b oldalhoz tartozó súlyvonal hossza: %f\n", sVonalHossz.b);
+    printf("A c oldalhoz tartozó súlyvonal hossza: %f\n", sVonalHossz.c);
 
     //konzolablak nyitvatartasa windowson
     #ifdef _WIN32
@@ -267,7 +285,8 @@ void Osszeadas()
 {
     clrscr();
     //adatbevitel
-    float aVektor[2], bVektor[2], osszeg[2];
+    struct Vektor osszeg;
+    float aVektor[2], bVektor[2];
     for (int i = 0; i < 2; i++)
     {
         printf("Add meg az 'A' vektor %i. koordinátáját\n", i + 1);
@@ -281,11 +300,12 @@ void Osszeadas()
     }
 
     //szamolas
-    osszeg[0] = aVektor[0] + bVektor[0];
-    osszeg[1] = aVektor[1] + bVektor[1];
+    osszeg.x = aVektor[0] + bVektor[0];
+    osszeg.y = aVektor[1] + bVektor[1];
 
     //kiiras
-    printf("Az összeg koordinátái: %f, %f\n", osszeg[0], osszeg[1]);
+    clrscr();
+    printf("Az összeg koordinátái: %f, %f\n", osszeg.x, osszeg.y);
     //konzolablak nyitvatartasa windowson
     #ifdef _WIN32
     getchar();
@@ -297,7 +317,8 @@ void Kivonas()
 {
     clrscr();
     //adatbevitel
-    float aVektor[2], bVektor[2], kulonbseg[2];
+    struct Vektor kulonbseg;
+    float aVektor[2], bVektor[2];
     for (int i = 0; i < 2; i++)
     {
         printf("Add meg a kissebbítendő vektor %i. koordinátáját\n", i + 1);
@@ -311,11 +332,12 @@ void Kivonas()
     }
 
     //szamolas
-    kulonbseg[0] = aVektor[0] - bVektor[0];
-    kulonbseg[1] = aVektor[1] - bVektor[1];
+    kulonbseg.x = aVektor[0] - bVektor[0];
+    kulonbseg.y = aVektor[1] - bVektor[1];
 
     //kiiras
-    printf("Az összeg koordinátái: %f, %f\n", kulonbseg[0], kulonbseg[1]);
+    clrscr();
+    printf("Az összeg koordinátái: %f, %f\n", kulonbseg.x, kulonbseg.y);
     //konzolablak nyitvatartasa windowson
     #ifdef _WIN32
     getchar();
@@ -360,7 +382,7 @@ int main() {
             Haromszog();
             break;
         default:
-            printf("Nem jó számot adtál meg.");
+            printf("Nem jó számot adtál meg.\n");
 
 }
 
