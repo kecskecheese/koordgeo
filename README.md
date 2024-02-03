@@ -7,20 +7,21 @@ Egyszerű koordináta geometria feladatok megoldása.
     - Terület
     - Oldalai vektorban
     - Oldalak hossza
-    - Oldalakhoz tartozó magasságok
+    - Oldalakhoz tartozó magassságok
     - Beírható és köréírható kör sugarai
     - Szögek fokban
+    - Középvonalak, súlyvonalak koordinátái, hosszai
 - Két vektor közbezárt szögének megadása
 - Két pont n-edelő (pl: negyedelő) pontjának megadása
 - Két vektor összeadása, kivonása
 ### Még sok mindent tervezek, elég kezdetleges a program
 ## Telepítés
 ### Windows
-1. Töltsd le a `koordgeo-win64.exe` file-t [innen](https://github.com/kecskecheese/koordgeo/releases/tag/v0.2.1)
+1. Töltsd le a `koordgeo-win64.exe` file-t [innen](https://github.com/kecskecheese/koordgeo/releases/latest)
 2. Futtasd
 3. Az antivirus lehet jelezni fog, de nem vírus, fent láthatod a forráskódot.
 ### Linux
-1. Töltsd le a `koordgeo-linux64.bin` filet [innen](https://github.com/kecskecheese/koordgeo/releases/tag/v0.2.1)
+1. Töltsd le a `koordgeo-linux64.bin` filet [innen](https://github.com/kecskecheese/koordgeo/releases/latest)
 2. Nyisd meg a terminált
 3. Írd be a következőt: `sudo chmod +x út_a_filehoz/koordgeo-linux64.bin` (ezzel futtathatóvá teszed a filet)
 4. Majd a következőt a futtatáshoz: `út_a_filehoz/koordgeo-linux64.bin`
