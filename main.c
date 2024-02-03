@@ -32,13 +32,13 @@ void Felezopont()
 
     for (int i = 0; i < 2; i++)
     {
-        printf("Add meg az 'A' vektor %i. koordinátáját\n", i + 1);
+        printf("Add meg a vektor 'A' végpontjának %i. koordinátáját\n", i + 1);
         scanf("%f", &aVektor[i]);
     }
 
     for (int i = 0; i < 2; i++)
     {
-        printf("Add meg a 'B' vektor %i. koordinátáját\n", i + 1);
+        printf("Add meg a vektor 'B' végpontjának %i. koordinátáját\n", i + 1);
         scanf("%f", &bVektor[i]);
     }
 
@@ -106,17 +106,17 @@ void Sokadolopont()
 
     //adatbevitel
 
-    printf("Írd be a pont es a vektorok arányát ':'-al elválasztva (pl AS:SB 1:3 amiben 'S' az n-edelő pont, negyedelő pont esetén)\n");
+    printf("Írd be a pont es a vektorok végpontjainak és az n-edelő pont arányát ':'-al elválasztva (pl AS:SB 1:3 amiben 'S' az n-edelő pont, negyedelő pont esetén)\n");
     scanf("%i:%i", &arany[0], &arany[1]);
     for (int i = 0; i < 2; i++)
     {
-        printf("Add meg az 'A' vektor %i. koordinátáját\n", i + 1);
+        printf("Add meg a vektor 'A' végpontjának %i. koordinátáját\n", i + 1);
         scanf("%f", &aVektor[i]);
     }
 
     for (int i = 0; i < 2; i++)
     {
-        printf("Add meg a 'B' vektor %i. koordinátáját\n", i + 1);
+        printf("Add meg a vektor 'B' végpontjának %i. koordinátáját\n", i + 1);
         scanf("%f", &bVektor[i]);
     }
 
@@ -134,8 +134,7 @@ void Sokadolopont()
     #endif
 }
 
-//koordinatakban megadott haromszog: K, s, T, szogek, r, R, oldalhosszak, oldalvektorok, m, sulypont
-//Isten bocsáss meg ezért a függvényért
+//koordinatakban megadott haromszog: K, s, T, szogek, r, R, oldalhosszak, oldalvektorok, m, sulypont, sulyvonalak, kozepvonalak
 
 void Haromszog()
 {
@@ -241,7 +240,7 @@ void Haromszog()
     sVonalHossz.b = sqrt(pow(sulyvonalB.x, 2) + pow(sulyvonalB.y, 2));
     sVonalHossz.c = sqrt(pow(sulyvonalC.x, 2) + pow(sulyvonalC.y, 2));
 
-    //kiiras
+    //kiiras kicsit undorító
     clrscr();
 
     printf("Az 'a' oldal koordinátái: %f, %f\n", oldalA.x, oldalA.y);
@@ -255,7 +254,7 @@ void Haromszog()
     printf("A 'c' oldal hossza: %f\n", oHossz.c);
     printf("A háromszög kerülete: %f, es kerületének fele: %f\n", K, s);
     printf("A háromszög területe: %f\n", T);
-    printf("A háromszögbe beírható kör sugara: %f, és a köréírhahosszA, hosszB, hosszC,tó kör sugara: %f\n", r, R);
+    printf("A háromszögbe beírható kör sugara: %f, és a köréírható kör sugara: %f\n", r, R);
     printf("Az 'a' oldalhoz tartozó magasság: %f\n", m.a);
     printf("A 'b' oldalhoz tartozó magasság: %f\n", m.b);
     printf("A 'c' oldalhoz tartozó magasság: %f\n", m.c);
