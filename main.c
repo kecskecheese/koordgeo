@@ -136,9 +136,10 @@ void Sokadolopont()
 
 //koordinatakban megadott haromszog: K, s, T, szogek, r, R, oldalhosszak, oldalvektorok, m, sulypont, sulyvonalak, kozepvonalak
 
-void Haromszog()
+int Haromszog()
 {
     clrscr();
+
     //adatbevitel
 
     float aVektor[2], bVektor[2], cVektor[2], K, s, T, r, R;
@@ -165,6 +166,10 @@ void Haromszog()
         printf("Add meg a 'C' pont %i. koordinátáját\n", i + 1);
         scanf("%f", &cVektor[i]);
     }
+
+    //menu
+    printf("Melyik adatát szeretnéd tudni a háromszögnek?\n");
+    printf("1. ");
 
     //szamolas
 
@@ -242,6 +247,9 @@ void Haromszog()
 
     //kiiras kicsit undorító
     clrscr();
+
+
+
 
     printf("Az 'a' oldal koordinátái: %f, %f\n", oldalA.x, oldalA.y);
     printf("A 'b' oldal koordinátái: %f, %f\n", oldalB.x, oldalB.y);
@@ -354,12 +362,15 @@ int main() {
 
     //funkcio kivalasztasa
 
-    int valasz;
+    int valasz, vissza = 0;
     clrscr();
     printf("Milyen típusú feladatot szeretnél megoldani?\n");
     printf("1. Két vektor összeadása\n2. Két vektor különbsége\n3. Két vektor felezőpontja\n4. Két vektor n-edelő pontja (pl negyedelő)\n5. Két vektor közbezárt szöge\n6. Egy koordinátákban megadott háromszög K, s, T, oldalvektorai, oldalhosszai, beírható és körülírható kör sugara, oldalhoz tartozó magasságai, súlypontjának koordinátái, szögei\n");
     scanf("%i", &valasz);
     printf("%i\n", valasz);
+
+
+// while (vissza = 0)
 
     switch (valasz) {
         case 1:
@@ -378,7 +389,7 @@ int main() {
             Kozbezart();
             break;
         case 6:
-            Haromszog();
+            int vissza = Haromszog();
             break;
         default:
             printf("Nem jó számot adtál meg.\n");
