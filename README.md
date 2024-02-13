@@ -29,7 +29,7 @@ Egyszerű koordináta geometria feladatok megoldása.
 Ez kicsit bonyolultabb, de szükséges az androidon való futtatáshoz.
 1. Telepítsd a [Termux-ot](https://github.com/termux/termux-app/releases/download/v0.118.0/termux-app_v0.118.0+github-debug_universal.apk) Fontos, hogy ne a Play storeból telepítsd, mert ott régi verzió van.
 2. Futtasd a következőket:
-3. `pkg install git gcc make`
+3. `pkg install git clang make`
 4. `git clone https://github.com/kecskecheese/koordgeo`
 5. `cd koordgeo`
 6. `make linux`
@@ -43,25 +43,25 @@ Ha nincs az architektúrádra futtatható program (pl.: 32-bites operációs ren
 <br>
 Szükséged lesz `git`-re, `gcc`-re és `make`-re
 #### Debian/Ubuntu alapú linux
-1. `sudo apt install gcc git make`<br>
+1. `sudo apt install clang git make`<br>
 2. `git clone https://github.com/kecskecheese/koordgeo`<br>
 3. `cd koordgeo`<br>
 4. `make linux`<br>
 5. `./koordgeo-linux64.bin`
 #### Arch alapú linux
-1. `sudo pacman -S gcc git make`
+1. `sudo pacman -S clang git make`
 2. `git clone https://github.com/kecskecheese/koordgeo`<br>
 3. `cd koordgeo`<br>
 4. `make linux`<br>
 5. `./koordgeo-linux64.bin`
 #### Fedora/Redhat alapú linux
-1. `sudo dnf install gcc git make`
+1. `sudo dnf install clang git make`
 2. `git clone https://github.com/kecskecheese/koordgeo`<br>
 3. `cd koordgeo`<br>
 4. `make linux`<br>
 5. `./koordgeo-linux64.bin`
 #### Android (Termux)
-1. `pkg install git gcc make`
+1. `pkg install git clang make`
 2. `git clone https://github.com/kecskecheese/koordgeo`<br>
 3. `cd koordgeo`<br>
 4. `make linux`<br>
