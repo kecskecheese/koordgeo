@@ -136,7 +136,7 @@ void Sokadolopont()
 
 //koordinatakban megadott haromszog: K, s, T, szogek, r, R, oldalhosszak, oldalvektorok, m, sulypont, sulyvonalak, kozepvonalak
 
-void Haromszog()
+int Haromszog()
 {
     clrscr();
 
@@ -245,7 +245,8 @@ void Haromszog()
     sVonalHossz.b = sqrt(pow(sulyvonalB.x, 2) + pow(sulyvonalB.y, 2));
     sVonalHossz.c = sqrt(pow(sulyvonalC.x, 2) + pow(sulyvonalC.y, 2));
 
-    //kiiras kicsit undorító
+    for(;;)
+    {
     clrscr();
 
     printf("Mit szeretnél tudni?\n");
@@ -271,6 +272,7 @@ void Haromszog()
         printf("Az 'a' oldal hossza: %f\n", oHossz.a);
         printf("A 'b' oldal hossza: %f\n", oHossz.b);
         printf("A 'c' oldal hossza: %f\n", oHossz.c);
+        getchar();
         break;
     case 2:
         printf("Az 'a' oldal felezőjének koordinátái: %f, %f\n", felezoA.x, felezoA.y);
@@ -309,43 +311,13 @@ void Haromszog()
         printf("Az a és a c oldalt összekötő középvonal hossza: %f\n", kVonalHossz.b);
         printf("A c és a b oldalt összekötő középvonal hossza: %f\n", kVonalHossz.a);
         break;
+    case 9:
+        return 0;
     default:
         printf("Nem jó számot adtál meg\n");
         break;
     }
-
-
-
-
-/*    printf("Az 'a' oldal koordinátái: %f, %f\n", oldalA.x, oldalA.y);
-    printf("A 'b' oldal koordinátái: %f, %f\n", oldalB.x, oldalB.y);
-    printf("A 'c' oldal koordinátái: %f, %f\n", oldalC.x, oldalC.y);
-    printf("Az 'a' oldal felezőjének koordinátái: %f, %f\n", felezoA.x, felezoA.y);
-    printf("A 'b' oldal felezőjének koordinátái: %f, %f\n", felezoB.x, felezoB.y);
-    printf("A 'c' oldal felezőjének koordinátái: %f, %f\n", felezoC.x, felezoC.y);
-    printf("Az 'a' oldal hossza: %f\n", oHossz.a);
-    printf("A 'b' oldal hossza: %f\n", oHossz.b);
-    printf("A 'c' oldal hossza: %f\n", oHossz.c);
-    printf("A háromszög kerülete: %f, es kerületének fele: %f\n", K, s);
-    printf("A háromszög területe: %f\n", T);
-    printf("A háromszögbe beírható kör sugara: %f, és a köréírható kör sugara: %f\n", r, R);
-    printf("Az 'a' oldalhoz tartozó magasság: %f\n", m.a);
-    printf("A 'b' oldalhoz tartozó magasság: %f\n", m.b);
-    printf("A 'c' oldalhoz tartozó magasság: %f\n", m.c);
-    printf("A háromszög súlypontjának koordinátái: %f, %f\n", sulypont.x, sulypont.y);
-    printf("A háromszög szögei, alfa: %f fok, beta: %f fok, gamma: %f fok\n", szog.a, szog.b, szog.c);
-    printf("Az a és a b oldalt összekötő középvonal: %f %f\n", kVonalC.x, kVonalC.y);
-    printf("Az a és a c oldalt összekötő középvonal: %f %f\n", kVonalB.x, kVonalB.y);
-    printf("A c és a b oldalt összekötő középvonal: %f %f\n", kVonalA.x, kVonalA.y);
-    printf("Az a és a b oldalt összekötő középvonal hossza: %f\n", kVonalHossz.c);
-    printf("Az a és a c oldalt összekötő középvonal hossza: %f\n", kVonalHossz.b);
-    printf("A c és a b oldalt összekötő középvonal hossza: %f\n", kVonalHossz.a);
-    printf("Az a oldalhoz tartozó súlyvonal: %f, %f\n", sulyvonalA.x, sulyvonalA.y);
-    printf("A b oldalhoz tartozó súlyvonal: %f, %f\n", sulyvonalB.x, sulyvonalB.y);
-    printf("A c oldalhoz tartozó súlyvonal: %f, %f\n", sulyvonalC.x, sulyvonalC.y);
-    printf("Az a oldalhoz tartozó súlyvonal hossza: %f\n", sVonalHossz.a);
-    printf("A b oldalhoz tartozó súlyvonal hossza: %f\n", sVonalHossz.b);
-    printf("A c oldalhoz tartozó súlyvonal hossza: %f\n", sVonalHossz.c); */
+    }
 
     //konzolablak nyitvatartasa windowson
     #ifdef _WIN32
