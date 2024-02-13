@@ -51,9 +51,8 @@ void Felezopont()
     clrscr();
     printf("A felezőpont koordinátái: %f, %f", felezo.x, felezo.y);
     //konzolablak nyitvatartasa windowson
-    #ifdef _WIN32
     getchar();
-    #endif
+    getchar();
 }
 //két vektor közbezárt szöge
 void Kozbezart()
@@ -90,9 +89,8 @@ void Kozbezart()
     clrscr();
     printf("A két vektor közbezárt szöge %f fok.\n", szog);
     //konzolablak nyitvatartasa windowson
-    #ifdef _WIN32
     getchar();
-    #endif
+    getchar();
 }
 
 //két vektor n-edelo pontja
@@ -128,10 +126,8 @@ void Sokadolopont()
     //kiiras
     clrscr();
     printf("Az n-edelő pont két koordinátája: %f, %f\n", sokadolo.x, sokadolo.y);
-    //konzolablak nyitvatartasa windowson
-    #ifdef _WIN32
     getchar();
-    #endif
+    getchar();
 }
 
 //koordinatakban megadott haromszog: K, s, T, szogek, r, R, oldalhosszak, oldalvektorok, m, sulypont, sulyvonalak, kozepvonalak
@@ -250,6 +246,7 @@ int Haromszog()
     clrscr();
 
     printf("Mit szeretnél tudni?\n");
+    printf("0. Kilépés\n");
     printf("1. Az oldalak hosszai és koordinátái\n");
     printf("2. Az oldalfelezők koordinátái\n");
     printf("3. A háromszög kerülete és területe\n");
@@ -258,7 +255,6 @@ int Haromszog()
     printf("6. A súlyvonalak és a súlypont\n");
     printf("7. A háromszög szögei\n");
     printf("8. A középvonalak\n");
-    printf("9. Kilépés\n");
 
     int valasz;
 
@@ -266,6 +262,8 @@ int Haromszog()
 
     switch (valasz)
     {
+    case 0:
+        return 0;
     case 1:
         printf("Az 'a' oldal koordinátái: %f, %f\n", oldalA.x, oldalA.y);
         printf("A 'b' oldal koordinátái: %f, %f\n", oldalB.x, oldalB.y);
@@ -327,18 +325,11 @@ int Haromszog()
         getchar();
         getchar();
         break;
-    case 9:
-        return 0;
     default:
         printf("Nem jó számot adtál meg\n");
         break;
     }
     }
-
-    //konzolablak nyitvatartasa windowson
-    #ifdef _WIN32
-    getchar();
-    #endif
 }
 
 //osszeadas
@@ -367,10 +358,8 @@ void Osszeadas()
     //kiiras
     clrscr();
     printf("Az összeg koordinátái: %f, %f\n", osszeg.x, osszeg.y);
-    //konzolablak nyitvatartasa windowson
-    #ifdef _WIN32
     getchar();
-    #endif
+    getchar();
 }
 
 //kivonas
@@ -399,10 +388,8 @@ void Kivonas()
     //kiiras
     clrscr();
     printf("Az összeg koordinátái: %f, %f\n", kulonbseg.x, kulonbseg.y);
-    //konzolablak nyitvatartasa windowson
-    #ifdef _WIN32
     getchar();
-    #endif
+    getchar();
 }
 
 
@@ -417,13 +404,17 @@ int main() {
     //funkcio kivalasztasa
 
     int valasz;
+    for(;;)
+{
     clrscr();
     printf("Milyen típusú feladatot szeretnél megoldani?\n");
-    printf("1. Két vektor összeadása\n2. Két vektor különbsége\n3. Két vektor felezőpontja\n4. Két vektor n-edelő pontja (pl negyedelő)\n5. Két vektor közbezárt szöge\n6. Egy koordinátákban megadott háromszög adatai.\n");
+    printf("0. Kilépés\n1. Két vektor összeadása\n2. Két vektor különbsége\n3. Két vektor felezőpontja\n4. Két vektor n-edelő pontja (pl negyedelő)\n5. Két vektor közbezárt szöge\n6. Egy koordinátákban megadott háromszög adatai.\n");
     scanf("%i", &valasz);
     printf("%i\n", valasz);
 
     switch (valasz) {
+        case 0:
+            return 0;
         case 1:
             Osszeadas();
             break;
@@ -445,6 +436,7 @@ int main() {
         default:
             printf("Nem jó számot adtál meg.\n");
 
+    }
 }
 
     //konzolablak nyitva tartasa windowson
