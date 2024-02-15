@@ -6,10 +6,28 @@
 #include <locale.h>
 #endif
 
+
 struct Vektor
 {
     float x, y;
 };
+
+
+// Ne használd, egyelőre csak prototípus
+float vektorA (float elsoPontA, float masodikPontA)
+{
+    // Első koordinátája a vektornak
+    return masodikPontA - elsoPontA;
+
+}
+
+float vektorB (float elsoPontB, float masodikPontB)
+{
+    // Második koordinátája a vektornak
+    return masodikPontB - elsoPontB;
+
+}
+
 
 struct Haromadat
 {
