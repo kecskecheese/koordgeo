@@ -165,7 +165,7 @@ int Haromszog()
 
     //menu
     printf("Melyik adatát szeretnéd tudni a háromszögnek?\n");
-    printf("1. ");
+
 
     //szamolas
 
