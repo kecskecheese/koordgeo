@@ -19,7 +19,12 @@ struct Haromadat
 //konzolba kiírtak törlése windowson és linuxon
 void clrscr()
 {
-    system("cls||clear");
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system ("clear");
+    #endif
+
 }
 
 // két koordináta felezopontjanak kiszamolasa
